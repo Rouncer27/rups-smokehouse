@@ -1,59 +1,135 @@
 import React from "react"
-import styled from "styled-components"
+import { graphql } from "gatsby"
 
 import Layout from "../components/Layout"
 import Seo from "../components/Seo"
-import { B1Black, B2Black, Btn1One, H1Black, H2Black } from "../styles/helpers"
 
-const IndexPage = () => {
+import HomeIntro from "../components/templates/home/HomeIntro"
+import Flavours from "../components/templates/home/Flavours"
+import SideByImages from "../components/templates/home/SideByImages"
+
+const IndexPage = props => {
   return (
     <Layout>
-      <h1>
-        Welcome to <b>Gatsby!</b>
-      </h1>
-
-      <StyledSection>
-        <h1>Aliquam tincidunt mauris eu risus.</h1>
-        <h2>Aliquam tincidunt mauris eu risus.</h2>
-        <p>
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio.
-          Quisque volutpat mattis eros. Nullam malesuada erat ut turpis.
-          Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio.
-          Quisque volutpat mattis eros. Nullam malesuada erat ut turpis.
-          Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.
-        </p>
-        <button>Click Me</button>
-        <a href="#">Click Me Next Page</a>
-      </StyledSection>
+      <Seo title="Home Page" />
+      <HomeIntro data={props.data.homeIntro.template.homeTemplate} />
+      <Flavours data={props.data.flavours.template.homeTemplate} />
+      <SideByImages data={props.data.sideByImages.template.homeTemplate} />
     </Layout>
   )
 }
 
-const StyledSection = styled.section`
-  h1 {
-    ${H1Black};
-  }
+export default IndexPage
 
-  h2 {
-    ${H2Black};
-  }
+export const homeQuery = graphql`
+  {
+    seoInfo: wpPage(slug: { eq: "home" }) {
+      seoFields {
+        seoMetaTitle
+        seoMetaDescription
+        seoMetaImage {
+          mediaItemUrl
+        }
+      }
+    }
 
-  p:first-of-type {
-    ${B1Black}
-  }
+    homeIntro: wpPage(slug: { eq: "home" }) {
+      template {
+        ... on WpTemplate_Home {
+          homeTemplate {
+            homeIntroTopTitle
+            homeIntroTitle
+            homeIntroContent
+            homeIntroSideText
+            homeIntroSideIcon {
+              altText
+              localFile {
+                childImageSharp {
+                  gatsbyImageData(width: 1500)
+                }
+              }
+            }
+            homeIntroLogo {
+              altText
+              localFile {
+                childImageSharp {
+                  gatsbyImageData(width: 1500)
+                }
+              }
+            }
+          }
+        }
+      }
+    }
 
-  p:last-of-type {
-    ${B2Black}
-  }
+    flavours: wpPage(slug: { eq: "home" }) {
+      template {
+        ... on WpTemplate_Home {
+          homeTemplate {
+            flavoursFireIcon {
+              altText
+              localFile {
+                childImageSharp {
+                  gatsbyImageData(width: 1500)
+                }
+              }
+            }
+            flavoursTitle
+            flavoursItems {
+              name
+              colour
+              image {
+                altText
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData(width: 1500)
+                  }
+                }
+              }
+            }
+            flavoursBackgroundImage {
+              altText
+              localFile {
+                childImageSharp {
+                  gatsbyImageData(width: 3000)
+                }
+              }
+            }
+            flavoursButtonText
+            flavoursLink {
+              ... on WpPage {
+                slug
+              }
+            }
+          }
+        }
+      }
+    }
 
-  a {
-    ${Btn1One};
+    sideByImages: wpPage(slug: { eq: "home" }) {
+      template {
+        ... on WpTemplate_Home {
+          homeTemplate {
+            sideByImagesImageOne {
+              altText
+              localFile {
+                childImageSharp {
+                  gatsbyImageData(width: 1500)
+                }
+              }
+            }
+
+            sideByImagesImageTwo {
+              altText
+              localFile {
+                childImageSharp {
+                  gatsbyImageData(width: 1500)
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   }
 `
-
-export const Head = () => <Seo title="Home" />
-
-export default IndexPage
