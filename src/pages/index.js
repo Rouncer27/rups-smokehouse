@@ -3,7 +3,7 @@ import styled from "styled-components"
 
 import Layout from "../components/Layout"
 import Seo from "../components/Seo"
-import { B1Black, B2Black, H1Black, H2Black } from "../styles/helpers"
+import { B1Black, B2Black, Btn1One, H1Black, H2Black } from "../styles/helpers"
 
 const IndexPage = () => {
   return (
@@ -26,6 +26,7 @@ const IndexPage = () => {
           Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.
         </p>
         <button>Click Me</button>
+        <a href="#">Click Me Next Page</a>
       </StyledSection>
     </Layout>
   )
@@ -46,6 +47,10 @@ const StyledSection = styled.section`
 
   p:last-of-type {
     ${B2Black}
+  }
+
+  a {
+    ${Btn1One};
   }
 `
 
