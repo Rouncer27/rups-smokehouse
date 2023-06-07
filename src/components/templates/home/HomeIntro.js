@@ -63,9 +63,12 @@ const HomeIntro = ({ data }) => {
           </div>
         </div>
       </div>
-      <div className="graphic-one">
-        <img src={graphicOne} alt="background" />
-      </div>
+      <div
+        className="graphic-one"
+        style={{
+          backgroundImage: `url(${graphicOne})`,
+        }}
+      />
     </StyledSection>
   )
 }
@@ -197,6 +200,10 @@ const StyledSection = styled.section`
     right: 0;
     bottom: 2rem;
     left: 0;
+    height: 4rem;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
     z-index: 1;
   }
 `
