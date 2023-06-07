@@ -5,7 +5,7 @@ import { ThemeProvider } from "styled-components"
 import theme from "../styles/theme/Theme"
 import GlobalStyle from "../styles/global/Golbal"
 
-import Header from "./header"
+import Header from "./Header"
 import Footer from "./Footer"
 
 const Layout = ({ children }) => {
