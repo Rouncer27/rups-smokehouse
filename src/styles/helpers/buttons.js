@@ -2,46 +2,51 @@ import { colors, fontSizer, fonts } from "./index"
 import { css } from "styled-components"
 
 const Btn1Base = css`
-  ${fontSizer(1.4, 1.8, 76.8, 150, 1.8)};
+  ${fontSizer(2, 3.1, 76.8, 150, 2)};
   position: relative;
   display: inline-block;
-  padding: 0.75rem 5rem;
+  padding: 0.75rem 6.3rem;
   border: none;
   transition: all 0.3s ease;
   border-radius: 0.4rem;
-  background-color: ${colors.colorAccent};
-  font-weight: bold;
+  background-color: ${colors.colorTertiary};
+  color: ${colors.white};
+  font-family: ${fonts.fontPrimary};
   font-stretch: normal;
   font-style: normal;
-  line-height: 2.14;
+  font-weight: normal;
+  line-height: 2.16;
   letter-spacing: normal;
   text-align: center;
   outline: none;
 
   &:hover {
+    color: ${colors.black};
+    background-color: ${colors.colorAccent};
     cursor: pointer;
   }
 
   &:disabled {
     opacity: 0.5;
     cursor: not-allowed;
+
+    &:hover {
+      background: ${colors.white};
+      color: ${colors.colorPrimary};
+      cursor: not-allowed;
+    }
   }
 `
 
 export const Btn1One = css`
   ${Btn1Base};
-  ${"" /* padding-right: 7.5rem; */}
-  padding: 0.75rem 1.5rem;
   color: ${colors.white};
-  border-radius: 0.4rem;
-  background-color: ${colors.colorAccent};
-  font-weight: bold;
-  font-family: ${fonts.fontPrimary};
+  background-color: ${colors.colorTertiary};
   text-transform: uppercase;
 
   &:hover {
-    color: ${colors.white};
-    background-color: ${colors.colorSecondary};
+    color: ${colors.black};
+    background-color: ${colors.colorAccent};
   }
 
   &:focus {
@@ -61,7 +66,6 @@ export const Btn1One = css`
 
 export const Btn1Two = css`
   ${Btn1Base};
-  padding-right: 7.5rem;
   background-color: ${colors.colorSecondary};
   color: ${colors.white};
   text-transform: uppercase;

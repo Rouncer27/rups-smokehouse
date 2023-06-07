@@ -7,7 +7,7 @@ import PrimaryFonts from "../Fonts/PrimaryFonts"
 import SecondaryFonts from "../Fonts/SecondaryFonts"
 import TertiaryFonts from "../Fonts/TertiaryFonts"
 
-import { fontSizer } from "../helpers/index"
+import { Btn1One, fontSizer } from "../helpers/index"
 
 const GlobalStyle = createGlobalStyle`
 /* Browser Reset */
@@ -114,6 +114,10 @@ a {
   color: ${props => props.theme.colorPrimary};
   font-weight: normal;
   transition: all 0.3s ease;
+}
+
+button {
+  ${Btn1One};
 }
 
 a:hover {

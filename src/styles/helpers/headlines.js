@@ -3,12 +3,12 @@ import { css } from "styled-components"
 
 // Headline Styles #1 //
 export const H1Base = css`
-  ${fontSizer(3, 4.2, 76.8, 150, 3)};
+  ${fontSizer(3, 5, 76.8, 150, 3)};
   font-family: ${fonts.fontPrimary};
   font-weight: normal;
   font-stretch: normal;
   font-style: normal;
-  line-height: 1.34;
+  line-height: 1.12;
   letter-spacing: normal;
 `
 
@@ -22,24 +22,14 @@ export const H1Black = css`
   color: ${colors.black};
 `
 
-export const H1Red = css`
-  ${H1Base};
-  color: ${colors.colorTertiary};
-`
-
-export const H1Blue = css`
-  ${H1Base};
-  color: ${colors.colorPrimary};
-`
-
 // Headline Styles #2 //
 export const H2Base = css`
-  ${fontSizer(2.6, 3.2, 76.8, 150, 2.5)};
+  ${fontSizer(2.6, 3.4, 76.8, 150, 2.5)};
   font-family: ${fonts.fontPrimary};
   font-weight: normal;
   font-stretch: normal;
   font-style: normal;
-  line-height: 1.43;
+  line-height: 1.21;
   letter-spacing: normal;
 `
 
@@ -51,16 +41,6 @@ export const H2White = css`
 export const H2Black = css`
   ${H2Base};
   color: ${colors.black};
-`
-
-export const H2Dark = css`
-  ${H2Base};
-  color: ${colors.colorPrimary};
-`
-
-export const H2Red = css`
-  ${H2Base};
-  color: ${colors.colorTertiary};
 `
 
 // Headline Styles #3 //
