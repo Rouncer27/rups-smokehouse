@@ -1,5 +1,5 @@
 const themeFonts = {
-  fontPrimary: "Barlow",
+  fontPrimary: "Roboto Slab",
   fontSecondary: "Barlow Condensed",
   fontTertiary: "Ubuntu",
   fontAwesome: "FontAwesome",

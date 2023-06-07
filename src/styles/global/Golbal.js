@@ -68,7 +68,7 @@ ${TertiaryFonts}
     margin: 0;
     margin-top: 0.5em;
     margin-bottom: 0.5em;
-    font-family: ${theme.fontSecondary};
+    font-family: ${theme.fontPrimary};
     font-size: 1.8rem;
     font-weight: normal;
     line-height: ${theme.baseLineHeight};

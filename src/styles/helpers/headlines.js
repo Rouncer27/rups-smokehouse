@@ -4,7 +4,7 @@ import { css } from "styled-components"
 // Headline Styles #1 //
 export const H1Base = css`
   ${fontSizer(3, 4.2, 76.8, 150, 3)};
-  font-family: ${fonts.fontSecondary};
+  font-family: ${fonts.fontPrimary};
   font-weight: normal;
   font-stretch: normal;
   font-style: normal;
@@ -35,7 +35,7 @@ export const H1Blue = css`
 // Headline Styles #2 //
 export const H2Base = css`
   ${fontSizer(2.6, 3.2, 76.8, 150, 2.5)};
-  font-family: ${fonts.fontSecondary};
+  font-family: ${fonts.fontPrimary};
   font-weight: normal;
   font-stretch: normal;
   font-style: normal;
