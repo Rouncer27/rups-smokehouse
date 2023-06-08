@@ -4,7 +4,6 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { medWrapper } from "../../../styles/helpers"
 
 const ProductsDisplay = ({ data }) => {
-  console.log("productsDisplay: ", data)
   return (
     <StyledDiv>
       <div className="wrapper">
