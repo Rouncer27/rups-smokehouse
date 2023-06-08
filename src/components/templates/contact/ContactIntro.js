@@ -51,7 +51,7 @@ const ContactIntro = ({ data }) => {
 const StyledSection = styled.section`
   background: linear-gradient(
     to bottom,
-    rgba(33, 35, 38, 0.6) 20rem,
+    rgba(33, 35, 38, 0.85) 20rem,
     rgba(138, 29, 26, 1) 20rem,
     rgba(138, 29, 26, 1) 100%
   );
