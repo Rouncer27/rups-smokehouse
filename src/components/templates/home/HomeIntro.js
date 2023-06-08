@@ -18,11 +18,11 @@ const HomeIntro = ({ data }) => {
   const image = getImage(
     data?.homeIntroLogo?.localFile?.childImageSharp?.gatsbyImageData
   )
-  const alt = getImage(data?.homeIntroLogo?.altText)
+  const alt = data?.homeIntroLogo?.altText
   const icon = getImage(
     data?.homeIntroSideIcon?.localFile?.childImageSharp?.gatsbyImageData
   )
-  const iconAlt = getImage(data?.homeIntroSideIcon?.altText)
+  const iconAlt = data?.homeIntroSideIcon?.altText
 
   return (
     <StyledSection>

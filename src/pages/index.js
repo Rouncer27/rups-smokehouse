@@ -67,6 +67,7 @@ export const homeQuery = graphql`
         ... on WpTemplate_Home {
           homeTemplate {
             flavoursFireIcon {
+              mediaItemUrl
               altText
               localFile {
                 childImageSharp {
@@ -89,6 +90,7 @@ export const homeQuery = graphql`
             }
             flavoursBackgroundImage {
               altText
+              mediaItemUrl
               localFile {
                 childImageSharp {
                   gatsbyImageData(width: 3000)

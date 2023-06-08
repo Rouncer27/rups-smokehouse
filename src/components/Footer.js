@@ -1,16 +1,73 @@
 import React from "react"
 import styled from "styled-components"
+import { graphql, useStaticQuery } from "gatsby"
+import { B1White, colors, medWrapper } from "../styles/helpers"
+
+const getData = graphql`
+  {
+    footerData: wp {
+      acfOptionsSiteWideSettings {
+        footer {
+          footerContentContent
+        }
+      }
+    }
+  }
+`
 
 const Footer = () => {
+  const data = useStaticQuery(getData)
   return (
     <StyledFooter>
-      © {new Date().getFullYear()} &middot; Built with
-      {` `}
-      <a href="https://www.gatsbyjs.com">Gatsby</a>
+      <div className="wrapper">
+        <div
+          className="content"
+          dangerouslySetInnerHTML={{
+            __html:
+              data.footerData.acfOptionsSiteWideSettings.footer
+                .footerContentContent,
+          }}
+        />
+        <div className="copy">
+          <p>
+            © {new Date().getFullYear()} &middot; Built with
+            {` `}
+            <a href="https://www.gatsbyjs.com">Gatsby</a>
+          </p>
+        </div>
+      </div>
     </StyledFooter>
   )
 }
 
-const StyledFooter = styled.footer``
+const StyledFooter = styled.footer`
+  background-color: ${colors.colorPrimary};
+
+  .wrapper {
+    ${medWrapper};
+    padding: 4.2rem;
+  }
+
+  .content {
+    width: 100%;
+    text-align: center;
+
+    p:last-of-type {
+      margin: 0;
+    }
+  }
+  .copy {
+    width: 100%;
+    text-align: center;
+
+    p:last-of-type {
+      margin: 0;
+    }
+  }
+
+  p {
+    ${B1White};
+  }
+`
 
 export default Footer
