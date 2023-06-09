@@ -1,9 +1,10 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import styled from "styled-components"
 import { B1White, Btn1One, standardWrapper } from "../../../styles/helpers"
 
 import submitToServer from "../../shared/formParts/functions/submitToServer"
 import InputFieldTwo from "../../shared/formParts/InputFieldTwo"
+import InputNumber from "../../shared/formParts/InputNumber"
 import ErrorModal from "../../shared/modals/ErrorModal"
 import SuccessModal from "../../shared/modals/SuccessModal"
 import LoadingModal from "../../shared/modals/LoadingModal"
@@ -19,12 +20,33 @@ const ContactForm = ({ data }) => {
     address: "",
   })
 
+  console.log("formData", formData)
+
   const [formStatus, setFormStatus] = useState({
     submitting: false,
     errorWarnDisplay: false,
     success: false,
     errors: [],
   })
+
+  const setFlavours = slug => {
+    setFormData(prevState => {
+      return {
+        ...prevState,
+        [slug]: 0,
+      }
+    })
+  }
+
+  useEffect(() => {
+    data.contactFormFlavoursAvailable.forEach(item => {
+      const slug = item.name
+        .toLowerCase()
+        .replace(/ /g, "-")
+        .replace(/[^\w-]+/g, "")
+      setFlavours(slug)
+    })
+  }, [data.contactFormFlavoursAvailable])
 
   const clearFormFields = () => {
     setFormData(() => {
@@ -63,6 +85,33 @@ const ContactForm = ({ data }) => {
     setFormData({
       ...formData,
       [event.target.name]: event.target.value,
+    })
+  }
+
+  const handleNumberKeyboard = event => {
+    const newValue = parseInt(event.target.value)
+
+    if (newValue > 25) return
+    if (newValue <= 0) return
+
+    setFormData({
+      ...formData,
+      [event.target.name]: newValue,
+    })
+  }
+
+  const handleNumberUp = productId => {
+    console.log("UP UP")
+    setFormData({
+      ...formData,
+      [productId]: formData[productId] + 1,
+    })
+  }
+
+  const handleNumberDown = productId => {
+    setFormData({
+      ...formData,
+      [productId]: formData[productId] - 1,
     })
   }
 
@@ -165,6 +214,32 @@ const ContactForm = ({ data }) => {
                 nameId="address"
                 required={true}
               />
+            </fieldset>
+
+            <fieldset>
+              {data.contactFormFlavoursAvailable.map((flav, index) => {
+                const flavSlug = flav.name
+                  .toLowerCase()
+                  .replace(/ /g, "-")
+                  .replace(/[^\w-]+/g, "")
+
+                return (
+                  <InputNumber
+                    key={index}
+                    value={formData[flavSlug] ? formData[flavSlug] : 0}
+                    handler={handleNumberKeyboard}
+                    handleNumberUp={handleNumberUp}
+                    handleNumberDown={handleNumberDown}
+                    errors={formStatus.errors}
+                    size="half"
+                    position="start"
+                    title={flav.name}
+                    type="number"
+                    nameId={flavSlug}
+                    required={false}
+                  />
+                )
+              })}
             </fieldset>
 
             <SubmitButton>
