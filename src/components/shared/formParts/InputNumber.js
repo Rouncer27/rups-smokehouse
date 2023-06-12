@@ -13,9 +13,11 @@ const InputNumber = ({
   required,
   handleNumberUp,
   handleNumberDown,
+  color,
 }) => {
+  console.log("color", color)
   return (
-    <InputFieldStyled size={size} position={position}>
+    <InputFieldStyled size={size} position={position} color={color}>
       <label htmlFor={nameId}>
         <button
           type="button"
@@ -51,6 +53,7 @@ const InputNumber = ({
         >
           &#8722;
         </button>
+        <span className="color-mark" />
         <span className="main-label">
           {title} <span className="required">&#42;</span>
         </span>
@@ -98,6 +101,26 @@ const InputFieldStyled = styled.div`
     display: block;
     width: 100%;
     line-height: 1.5;
+
+    .color-mark {
+      display: inline-block;
+      width: 2.5rem;
+      height: 2.5rem;
+      margin-left: 2.5rem;
+      border-radius: 50%;
+      background-color: ${props =>
+        props.color === "yellow"
+          ? colors.colorAccent
+          : props.color === "orange"
+          ? colors.colorTertiary
+          : props.color === "blue"
+          ? colors.colorShad
+          : props.color === "green"
+          ? colors.colorShad2
+          : props.color === "red"
+          ? colors.colorPrimary
+          : colors.colorPrimary};
+    }
 
     .main-label {
       padding-left: 2.5rem;

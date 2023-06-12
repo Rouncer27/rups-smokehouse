@@ -237,6 +237,7 @@ const ContactForm = ({ data }) => {
                     type="number"
                     nameId={flavSlug}
                     required={false}
+                    color={flav.colour}
                   />
                 )
               })}
@@ -286,6 +287,8 @@ const StyledDiv = styled.div`
 `
 
 const SubmitButton = styled.div`
+  margin-top: 5rem;
+
   p {
     ${B1White};
   }
