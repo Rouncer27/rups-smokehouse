@@ -10,17 +10,16 @@ import SuccessModal from "../../shared/modals/SuccessModal"
 import LoadingModal from "../../shared/modals/LoadingModal"
 
 const ContactForm = ({ data }) => {
-  console.log("ContactForm: ", data)
-
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
     email: "",
     phone: "",
-    address: "",
+    streetAddress: "",
+    city: "",
+    province: "",
+    postalCode: "",
   })
-
-  console.log("formData", formData)
 
   const [formStatus, setFormStatus] = useState({
     submitting: false,
@@ -55,7 +54,10 @@ const ContactForm = ({ data }) => {
         lastName: "",
         email: "",
         phone: "",
-        address: "",
+        streetAddress: "",
+        city: "",
+        province: "",
+        postalCode: "",
       }
     })
   }
@@ -203,15 +205,51 @@ const ContactForm = ({ data }) => {
                 nameId="phone"
                 required={true}
               />
+            </fieldset>
+
+            <fieldset className="street-address">
               <InputFieldTwo
-                value={formData.address}
+                value={formData.streetAddress}
                 handler={handleOnChange}
                 errors={formStatus.errors}
                 size="full"
                 position="start"
-                title="Shipping Address or Pick up Location"
+                title="Street Address"
                 type="text"
-                nameId="address"
+                nameId="streetAddress"
+                required={true}
+              />
+              <InputFieldTwo
+                value={formData.city}
+                handler={handleOnChange}
+                errors={formStatus.errors}
+                size="half"
+                position="start"
+                title="City"
+                type="text"
+                nameId="city"
+                required={true}
+              />
+              <InputFieldTwo
+                value={formData.province}
+                handler={handleOnChange}
+                errors={formStatus.errors}
+                size="half"
+                position="start"
+                title="Province"
+                type="text"
+                nameId="province"
+                required={true}
+              />
+              <InputFieldTwo
+                value={formData.postalCode}
+                handler={handleOnChange}
+                errors={formStatus.errors}
+                size="half"
+                position="start"
+                title="Postal Code"
+                type="text"
+                nameId="postalCode"
                 required={true}
               />
             </fieldset>
@@ -282,6 +320,10 @@ const StyledDiv = styled.div`
       padding: 0;
       margin: 0;
       border: none;
+    }
+
+    .street-address {
+      margin-bottom: 5rem;
     }
   }
 `

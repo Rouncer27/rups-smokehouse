@@ -15,7 +15,6 @@ const InputNumber = ({
   handleNumberDown,
   color,
 }) => {
-  console.log("color", color)
   return (
     <InputFieldStyled size={size} position={position} color={color}>
       <label htmlFor={nameId}>
