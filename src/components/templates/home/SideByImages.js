@@ -28,23 +28,73 @@ const SideByImages = ({ data }) => {
 
 const StyledDiv = styled.div`
   .wrapper {
+    position: relative;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    min-height: 80rem;
+
+    @media (min-width: 768px) {
+      min-height: 40vw;
+    }
+
+    @media (min-width: 1025px) {
+      min-height: 40vw;
+    }
   }
 
   .image-one {
-    width: calc(100%);
+    position: absolute;
+    top: 0;
+    left: 0%;
+    width: 100%;
+    height: 50%;
+    transform-origin: center center;
+    z-index: 1;
 
     @media (min-width: 768px) {
       width: calc(50%);
+      height: 100%;
+    }
+
+    .gatsby-image-wrapper {
+      width: 100% !important;
+      height: 100% !important;
+    }
+
+    img {
+      display: block !important;
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover;
     }
   }
   .image-two {
-    width: calc(100%);
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    width: 100%;
+    height: 50%;
+    transform-origin: center center;
+    z-index: 1;
 
     @media (min-width: 768px) {
       width: calc(50%);
+      top: 0;
+      left: 50%;
+      height: 100%;
+    }
+
+    .gatsby-image-wrapper {
+      width: 100% !important;
+      height: 100% !important;
+    }
+
+    img {
+      display: block !important;
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover;
     }
   }
 `
