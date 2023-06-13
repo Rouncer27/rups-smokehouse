@@ -15,7 +15,7 @@ const InputFieldTwo = ({
   return (
     <InputFieldStyled size={size} position={position}>
       <label htmlFor={nameId}>
-        {title} <span className="required">&#42;</span>
+        {title} <span className="required">{required && <>&#42;</>}</span>
         <span
           className={`error-message ${
             errors.findIndex(error => error.idref === nameId) !== -1 &&
@@ -40,7 +40,7 @@ const InputFieldTwo = ({
 
 const InputFieldStyled = styled.div`
   width: calc(100%);
-  margin: 1rem auto;
+  margin: 0rem auto;
   ${props => (props.size === "full" ? "margin: 1rem auto" : null)};
   padding: 1rem 0;
 

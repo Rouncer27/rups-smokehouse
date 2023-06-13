@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import { colors, B1Black } from "../../../styles/helpers"
+import { colors, B2White } from "../../../styles/helpers"
 const TextareaField = ({
   value,
   handler,
@@ -49,16 +49,10 @@ const TextareaFieldStyled = styled.div`
   padding: 1rem 0;
 
   label {
-    ${B1Black};
+    ${B2White};
     display: block;
     width: 100%;
-    color: #1a6587;
     line-height: 1.5;
-
-    &:hover {
-      color: ${colors.colorPrimary};
-      cursor: initial;
-    }
 
     .error-message {
       display: none;

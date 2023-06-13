@@ -1,13 +1,20 @@
 import React, { useState, useEffect } from "react"
 import styled from "styled-components"
-import { B1White, Btn1One, standardWrapper } from "../../../styles/helpers"
+import {
+  B1White,
+  B2White,
+  Btn1One,
+  standardWrapper,
+} from "../../../styles/helpers"
 
 import submitToServer from "../../shared/formParts/functions/submitToServer"
 import InputFieldTwo from "../../shared/formParts/InputFieldTwo"
+import TextareaField from "../../shared/formParts/TextareaField"
 import InputNumber from "../../shared/formParts/InputNumber"
 import ErrorModal from "../../shared/modals/ErrorModal"
 import SuccessModal from "../../shared/modals/SuccessModal"
 import LoadingModal from "../../shared/modals/LoadingModal"
+import icon from "../../../images/chunky-style.png"
 
 const ContactForm = ({ data }) => {
   const [formData, setFormData] = useState({
@@ -19,6 +26,7 @@ const ContactForm = ({ data }) => {
     city: "",
     province: "",
     postalCode: "",
+    comments: "",
   })
 
   const [formStatus, setFormStatus] = useState({
@@ -58,6 +66,7 @@ const ContactForm = ({ data }) => {
         city: "",
         province: "",
         postalCode: "",
+        comments: "",
       }
     })
   }
@@ -255,6 +264,7 @@ const ContactForm = ({ data }) => {
             </fieldset>
 
             <fieldset>
+              <p>PICK YOUR FLAVOUR AND QUANTITY NEEDED</p>
               {data.contactFormFlavoursAvailable.map((flav, index) => {
                 const flavSlug = flav.name
                   .toLowerCase()
@@ -280,6 +290,20 @@ const ContactForm = ({ data }) => {
                 )
               })}
             </fieldset>
+            <fieldset>
+              <TextareaField
+                value={formData.comments}
+                handler={handleOnChange}
+                errors={formStatus.errors}
+                size="full"
+                position="start"
+                title="Comments or Questions"
+                type="text"
+                nameId="comments"
+                required={false}
+                rows={4}
+              />
+            </fieldset>
 
             <SubmitButton>
               <p className="required-note">
@@ -297,13 +321,36 @@ const ContactForm = ({ data }) => {
       {formStatus.errorWarnDisplay && (
         <ErrorModal handleErrorModalClose={handleErrorModalClose} />
       )}
+      <div
+        className="icon-chunky"
+        style={{
+          backgroundImage: `url(${icon})`,
+        }}
+      />
     </StyledDiv>
   )
 }
 
 const StyledDiv = styled.div`
+  position: relative;
   background-color: #212326;
   padding: 4rem 0;
+
+  .icon-chunky {
+    display: none;
+    position: absolute;
+    bottom: 35%;
+    right: -2rem;
+    width: calc(86.9rem / 4);
+    height: calc(86.9rem / 4);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    @media (min-width: 768px) {
+      display: block;
+    }
+  }
 
   .wrapper {
     ${standardWrapper};
@@ -320,6 +367,10 @@ const StyledDiv = styled.div`
       padding: 0;
       margin: 0;
       border: none;
+    }
+
+    p {
+      ${B2White};
     }
 
     .street-address {

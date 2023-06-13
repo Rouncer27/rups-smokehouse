@@ -4,6 +4,7 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { B1White, B2White, H1White, medWrapper } from "../../../styles/helpers"
 
 import mountains from "../../../images/mountains-icon.png"
+import { Link } from "gatsby"
 
 const ContactIntro = ({ data }) => {
   const image = getImage(
@@ -18,7 +19,9 @@ const ContactIntro = ({ data }) => {
         </div>
         <div className="contact-intro__images">
           <div className="contact-intro__images--logo">
-            <GatsbyImage image={image} alt={alt} />
+            <Link to={`/`}>
+              <GatsbyImage image={image} alt={alt} />
+            </Link>
           </div>
           <div
             className="contact-intro__images--mountains"
@@ -66,6 +69,7 @@ const StyledSection = styled.section`
     h1 {
       ${B2White};
       text-align: center;
+      opacity: 0.8;
     }
   }
 
@@ -110,6 +114,8 @@ const StyledSection = styled.section`
 
   .contact-intro__content {
     width: 100%;
+    max-width: 100rem;
+    margin: auto;
     padding: 4rem 0;
 
     &--title {
@@ -118,6 +124,7 @@ const StyledSection = styled.section`
 
       h2 {
         ${H1White};
+        text-transform: uppercase;
       }
     }
 
