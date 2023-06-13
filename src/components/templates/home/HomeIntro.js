@@ -75,8 +75,12 @@ const HomeIntro = ({ data }) => {
 
 const StyledSection = styled.section`
   position: relative;
-  background-color: #212326;
+  background-color: ${colors.colorPrimary};
   padding-top: 5.8rem;
+
+  @media (min-width: 768px) {
+    background-color: #212326;
+  }
 
   .wrapper {
     display: flex;
@@ -89,11 +93,12 @@ const StyledSection = styled.section`
     width: calc(100%);
     border-top-right-radius: 10rem;
     border-bottom-right-radius: 10rem;
-    background-color: ${colors.colorPrimary};
+    background-color: transparent;
     z-index: 10;
 
     @media (min-width: 768px) {
       width: calc(65%);
+      background-color: ${colors.colorPrimary};
     }
 
     @media (min-width: 1025px) {
@@ -104,10 +109,11 @@ const StyledSection = styled.section`
       width: 100%;
       max-width: 67.5rem;
       margin: 0 0 0 auto;
-      padding: 7rem 12rem;
+      padding: 2rem 2rem;
 
       @media (min-width: 768px) {
         max-width: 67.5rem;
+        padding: 7rem 12rem;
       }
 
       @media (min-width: 1025px) {
@@ -116,10 +122,21 @@ const StyledSection = styled.section`
     }
 
     &__logo {
+      max-width: 30rem;
+      margin: auto;
       margin-bottom: 5rem;
+
+      @media (min-width: 768px) {
+        max-width: 100%;
+      }
     }
 
     &__title {
+      text-align: center;
+      @media (min-width: 768px) {
+        text-align: left;
+      }
+
       p {
         ${B2White};
         text-transform: uppercase;
@@ -132,6 +149,12 @@ const StyledSection = styled.section`
     }
 
     &__content {
+      text-align: center;
+
+      @media (min-width: 768px) {
+        text-align: left;
+      }
+
       p {
         ${B1White};
       }
@@ -152,10 +175,11 @@ const StyledSection = styled.section`
     }
 
     &__inner {
-      padding: 4rem 3.5rem;
+      padding: 2rem;
 
       @media (min-width: 768px) {
         max-width: 30rem;
+        padding: 4rem 3.5rem;
       }
 
       @media (min-width: 1025px) {
@@ -164,9 +188,14 @@ const StyledSection = styled.section`
     }
 
     &__order {
-      position: absolute;
-      top: 2rem;
-      right: 0;
+      text-align: center;
+
+      @media (min-width: 768px) {
+        position: absolute;
+        top: 2rem;
+        right: 0;
+        text-align: left;
+      }
 
       a {
         ${Btn1One};
@@ -174,8 +203,14 @@ const StyledSection = styled.section`
     }
 
     &__mountains {
-      margin-top: 7.5rem;
-      margin-bottom: 3rem;
+      max-width: 20rem;
+      margin: 4rem auto;
+
+      @media (min-width: 768px) {
+        max-width: 100%;
+        margin-top: 7.5rem;
+        margin-bottom: 3rem;
+      }
     }
 
     &__content {
@@ -188,6 +223,12 @@ const StyledSection = styled.section`
     }
 
     &__icon {
+      display: none;
+
+      @media (min-width: 768px) {
+        display: block;
+      }
+
       &--wrapper {
         margin-left: auto;
         max-width: 26rem;
@@ -196,6 +237,7 @@ const StyledSection = styled.section`
   }
 
   .graphic-one {
+    display: none;
     position: absolute;
     right: 0;
     bottom: 2rem;
@@ -205,6 +247,10 @@ const StyledSection = styled.section`
     background-size: cover;
     background-repeat: no-repeat;
     z-index: 1;
+
+    @media (min-width: 768px) {
+      display: block;
+    }
   }
 `
 

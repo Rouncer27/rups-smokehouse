@@ -76,12 +76,17 @@ const StyledSection = styled.section`
     &--logo {
       position: relative;
       width: 100%;
-      max-width: 45.6rem;
+      max-width: 30rem;
       margin: auto;
       z-index: 10;
+
+      @media (min-width: 768px) {
+        max-width: 45.6rem;
+      }
     }
 
     &--mountains {
+      display: none;
       position: absolute;
       top: 0rem;
       left: 0;
@@ -91,6 +96,10 @@ const StyledSection = styled.section`
       background-size: cover;
       background-repeat: no-repeat;
       z-index: 1;
+
+      @media (min-width: 768px) {
+        display: block;
+      }
 
       &:last-of-type {
         left: auto;

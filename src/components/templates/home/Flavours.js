@@ -60,9 +60,14 @@ const Flavours = ({ data }) => {
 
 const StyledSection = styled.section`
   position: relative;
-  padding-top: 14rem;
+  padding-top: 20rem;
   padding-bottom: 10rem;
   z-index: 10;
+
+  @media (min-width: 768px) {
+    padding-top: 14rem;
+    padding-bottom: 10rem;
+  }
 
   .wrapper {
     ${medWrapper};
@@ -109,15 +114,22 @@ const StyledSection = styled.section`
 
   .flavours-fire {
     position: absolute;
-    top: -9rem;
+    top: 2rem;
     left: 50%;
-    width: calc(20.8rem / 1.25);
-    height: calc(25.2rem / 1.25);
+    width: calc(20.8rem / 1.5);
+    height: calc(25.2rem / 1.5);
     transform: translateX(-50%);
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
     z-index: 2;
+
+    @media (min-width: 768px) {
+      top: -9rem;
+      left: 50%;
+      width: calc(20.8rem / 1.25);
+      height: calc(25.2rem / 1.25);
+    }
   }
 
   .flavours-bg {
@@ -134,10 +146,12 @@ const StyledSection = styled.section`
 `
 
 const Item = styled.div`
-  width: calc(50%);
+  width: calc(50% - 1rem);
+  margin: 0.5rem;
 
   @media (min-width: 768px) {
-    width: calc(50%);
+    width: calc(50% - 2rem);
+    margin: 1rem;
   }
 
   @media (min-width: 1025px) {
