@@ -76,9 +76,10 @@ const HomeIntro = ({ data }) => {
 const StyledSection = styled.section`
   position: relative;
   background-color: ${colors.colorPrimary};
-  padding-top: 5.8rem;
+  padding-top: 2rem;
 
   @media (min-width: 768px) {
+    padding-top: 5.8rem;
     background-color: #212326;
   }
 
