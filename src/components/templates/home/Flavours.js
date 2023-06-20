@@ -20,7 +20,7 @@ const Flavours = ({ data }) => {
       .timeline({
         scrollTrigger: {
           trigger: "#flavours-section",
-          markers: true,
+          markers: false,
           start: "top 30%",
           toggleActions: "play none none none",
         },

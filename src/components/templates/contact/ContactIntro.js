@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import styled from "styled-components"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { B1White, B2White, H1White, medWrapper } from "../../../styles/helpers"
@@ -6,13 +6,117 @@ import { B1White, B2White, H1White, medWrapper } from "../../../styles/helpers"
 import mountains from "../../../images/mountains-icon.png"
 import { Link } from "gatsby"
 
+import { gsap } from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+gsap.registerPlugin(ScrollTrigger)
+
 const ContactIntro = ({ data }) => {
   const image = getImage(
     data?.contactIntroLogo?.localFile?.childImageSharp?.gatsbyImageData
   )
   const alt = data?.contactIntroLogo?.altText
+
+  useEffect(() => {
+    const mainLogo = document.querySelector(
+      "#contact-intro .contact-intro__images--logo"
+    )
+    const mountainOne = document.querySelector("#contact-intro .mountain-one")
+    const mountainTwo = document.querySelector("#contact-intro .mountain-two")
+
+    const mainTitle = document.querySelector(
+      "#contact-intro .contact-intro__content--title"
+    )
+    const mainContent = document.querySelector(
+      "#contact-intro .contact-intro__content--paragraph"
+    )
+
+    console.log("mainTitle", mainTitle)
+
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: "#contact-intro",
+          markers: false,
+          start: "-65px",
+          end: "bottom ",
+          scrub: false,
+        },
+      })
+      .add("start")
+      .fromTo(
+        mainLogo,
+        {
+          y: -300,
+          autoAlpha: 0,
+        },
+        {
+          ease: "power2.out",
+          y: 0,
+          autoAlpha: 1,
+          duration: 1.5,
+        }
+      )
+      .fromTo(
+        mountainOne,
+        {
+          x: -300,
+          autoAlpha: 0,
+        },
+        {
+          ease: "power2.out",
+          x: 0,
+          autoAlpha: 1,
+          duration: 1.5,
+        },
+        "start+=0.5"
+      )
+      .fromTo(
+        mountainTwo,
+        {
+          x: 300,
+          autoAlpha: 0,
+        },
+        {
+          ease: "power2.out",
+          x: 0,
+          autoAlpha: 1,
+          duration: 1.5,
+        },
+        "start+=0.5"
+      )
+      .add("second")
+      .fromTo(
+        mainTitle,
+        {
+          y: 100,
+          autoAlpha: 0,
+        },
+        {
+          ease: "power2.out",
+          y: 0,
+          autoAlpha: 1,
+          duration: 1,
+        },
+        "second-=0.5"
+      )
+      .fromTo(
+        mainContent,
+        {
+          y: 100,
+          autoAlpha: 0,
+        },
+        {
+          ease: "power2.out",
+          y: 0,
+          autoAlpha: 1,
+          duration: 1,
+        },
+        "second"
+      )
+  }, [])
+
   return (
-    <StyledSection>
+    <StyledSection id="contact-intro">
       <div className="wrapper">
         <div className="contact-intro__top-title">
           <h1>{data.contactIntroTopTitle}</h1>
@@ -24,13 +128,13 @@ const ContactIntro = ({ data }) => {
             </Link>
           </div>
           <div
-            className="contact-intro__images--mountains"
+            className="contact-intro__images--mountains mountain-one"
             style={{
               backgroundImage: `url(${mountains})`,
             }}
           />
           <div
-            className="contact-intro__images--mountains"
+            className="contact-intro__images--mountains mountain-two"
             style={{
               backgroundImage: `url(${mountains})`,
             }}

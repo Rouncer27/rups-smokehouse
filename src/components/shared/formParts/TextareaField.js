@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import { colors, B2White } from "../../../styles/helpers"
+import { B2White } from "../../../styles/helpers"
 const TextareaField = ({
   value,
   handler,
