@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import styled from "styled-components"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import {
@@ -10,9 +10,55 @@ import {
 } from "../../../styles/helpers"
 import { Link } from "gatsby"
 
+import { gsap } from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+gsap.registerPlugin(ScrollTrigger)
+
 const Flavours = ({ data }) => {
+  useEffect(() => {
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: "#flavours-section",
+          markers: true,
+          start: "top 30%",
+          toggleActions: "play none none none",
+        },
+      })
+      .add("start")
+      .fromTo(
+        `#flavours-section .fav-item`,
+        {
+          autoAlpha: 0,
+          y: 100,
+        },
+        {
+          autoAlpha: 1,
+          ease: "power2.out",
+          y: 0,
+          duration: 1.25,
+          stagger: {
+            each: 0.25,
+          },
+        }
+      )
+      .fromTo(
+        `#flavours-section .flavours-link`,
+        {
+          autoAlpha: 0,
+          x: -300,
+        },
+        {
+          autoAlpha: 1,
+          ease: "elastic.out(1, 0.4)",
+          x: 0,
+          duration: 1.5,
+        }
+      )
+  }, [])
+
   return (
-    <StyledSection>
+    <StyledSection id="flavours-section">
       <div className="wrapper">
         <div className="flavours-title">
           <h2>{data.flavoursTitle}</h2>
@@ -25,7 +71,7 @@ const Flavours = ({ data }) => {
             const alt = item?.image?.altText
 
             return (
-              <Item key={index} colorHead={item.colour}>
+              <Item className="fav-item" key={index} colorHead={item.colour}>
                 <div className="item-title">
                   <h3>{item.name}</h3>
                 </div>

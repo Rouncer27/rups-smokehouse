@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import styled from "styled-components"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import {
@@ -14,6 +14,10 @@ import { Link } from "gatsby"
 import mountians from "../../../images/mountains-icon.png"
 import graphicOne from "../../../images/graphic-one.png"
 
+import { gsap } from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+gsap.registerPlugin(ScrollTrigger)
+
 const HomeIntro = ({ data }) => {
   const image = getImage(
     data?.homeIntroLogo?.localFile?.childImageSharp?.gatsbyImageData
@@ -24,8 +28,71 @@ const HomeIntro = ({ data }) => {
   )
   const iconAlt = data?.homeIntroSideIcon?.altText
 
+  useEffect(() => {
+    const mainLogo = document.querySelector("#home-intro .main-side__logo")
+    const mountains = document.querySelector(
+      "#home-intro .second-side__mountains"
+    )
+    const chunky = document.querySelector(
+      "#home-intro .second-side__icon--wrapper"
+    )
+
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: "#home-intro",
+          markers: false,
+          start: "-65px",
+          end: "bottom ",
+          scrub: false,
+        },
+      })
+      .add("start")
+      .fromTo(
+        mainLogo,
+        {
+          x: -300,
+          autoAlpha: 0,
+        },
+        {
+          ease: "power2.out",
+          x: 0,
+          autoAlpha: 1,
+          duration: 1.5,
+        }
+      )
+      .fromTo(
+        mountains,
+        {
+          y: 100,
+          autoAlpha: 0,
+        },
+        {
+          ease: "power2.out",
+          y: 0,
+          autoAlpha: 1,
+          duration: 1.5,
+        },
+        "start+=0.5"
+      )
+      .fromTo(
+        chunky,
+        {
+          x: 300,
+          autoAlpha: 0,
+        },
+        {
+          ease: "power2.out",
+          x: 0,
+          autoAlpha: 1,
+          duration: 1.5,
+        },
+        "start+=0.75"
+      )
+  }, [])
+
   return (
-    <StyledSection>
+    <StyledSection id="home-intro">
       <div className="wrapper">
         <div className="main-side">
           <div className="main-side__inner">
