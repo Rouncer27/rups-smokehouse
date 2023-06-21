@@ -8,6 +8,7 @@ import ContactIntro from "../components/templates/contact/ContactIntro"
 import ContactForm from "../components/templates/contact/ContactForm"
 import ProductsDisplay from "../components/templates/contact/ProductsDisplay"
 import SideByImages from "../components/templates/contact/SideByImages"
+import Testimonial from "../components/templates/contact/Testimonial"
 
 const contact = props => {
   return (
@@ -19,6 +20,7 @@ const contact = props => {
         data={props.data.productsDisplay.template.contactTemplate}
       />
       <SideByImages data={props.data.sideByImages.template.contactTemplate} />
+      <Testimonial data={props.data.testimonal.template.contactTemplate} />
     </Layout>
   )
 }
@@ -111,6 +113,16 @@ export const contactTempQuery = graphql`
                 }
               }
             }
+          }
+        }
+      }
+    }
+
+    testimonal: wpPage(id: { eq: $id }) {
+      template {
+        ... on WpTemplate_Contact {
+          contactTemplate {
+            testimonialQuote
           }
         }
       }

@@ -67,6 +67,12 @@ const StyledFooter = styled.footer`
 
   p {
     ${B1White};
+    color: rgba(255, 255, 255, 0.55);
+
+    a {
+      ${B1White};
+      color: rgba(255, 255, 255, 0.55);
+    }
   }
 `
 

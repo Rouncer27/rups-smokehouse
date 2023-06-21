@@ -7,6 +7,7 @@ import Seo from "../components/Seo"
 import HomeIntro from "../components/templates/home/HomeIntro"
 import Flavours from "../components/templates/home/Flavours"
 import SideByImages from "../components/templates/home/SideByImages"
+import Testimonial from "../components/templates/home/Testimonial"
 
 const IndexPage = props => {
   return (
@@ -15,6 +16,7 @@ const IndexPage = props => {
       <HomeIntro data={props.data.homeIntro.template.homeTemplate} />
       <Flavours data={props.data.flavours.template.homeTemplate} />
       <SideByImages data={props.data.sideByImages.template.homeTemplate} />
+      <Testimonial data={props.data.testimonal.template.homeTemplate} />
     </Layout>
   )
 }
@@ -129,6 +131,16 @@ export const homeQuery = graphql`
                 }
               }
             }
+          }
+        }
+      }
+    }
+
+    testimonal: wpPage(slug: { eq: "home" }) {
+      template {
+        ... on WpTemplate_Home {
+          homeTemplate {
+            testimonialQuote
           }
         }
       }
