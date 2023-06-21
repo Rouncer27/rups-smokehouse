@@ -28,13 +28,6 @@ const Footer = () => {
                 .footerContentContent,
           }}
         />
-        <div className="copy">
-          <p>
-            © {new Date().getFullYear()} &middot; Built with
-            {` `}
-            <a href="https://www.gatsbyjs.com">Gatsby</a>
-          </p>
-        </div>
       </div>
     </StyledFooter>
   )
@@ -49,14 +42,6 @@ const StyledFooter = styled.footer`
   }
 
   .content {
-    width: 100%;
-    text-align: center;
-
-    p:last-of-type {
-      margin: 0;
-    }
-  }
-  .copy {
     width: 100%;
     text-align: center;
 
