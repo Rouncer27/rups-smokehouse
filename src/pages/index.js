@@ -10,9 +10,15 @@ import SideByImages from "../components/templates/home/SideByImages"
 import Testimonial from "../components/templates/home/Testimonial"
 
 const IndexPage = props => {
+  const seoInfo = props.data.seoInfo
   return (
     <Layout>
-      <Seo title="Home Page" />
+      <Seo
+        title={seoInfo.seoFields.seoMetaTitle}
+        description={seoInfo.seoFields.seoMetaDescription}
+        metaImg={seoInfo.seoFields.seoMetaImage.mediaItemUrl}
+        location={props.location.pathname}
+      />
       <HomeIntro data={props.data.homeIntro.template.homeTemplate} />
       <Flavours data={props.data.flavours.template.homeTemplate} />
       <SideByImages data={props.data.sideByImages.template.homeTemplate} />
