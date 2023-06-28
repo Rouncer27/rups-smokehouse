@@ -11,9 +11,15 @@ import SideByImages from "../components/templates/contact/SideByImages"
 import Testimonial from "../components/templates/contact/Testimonial"
 
 const contact = props => {
+  const seoInfo = props.data.seoInfo
   return (
     <Layout>
-      <Seo title="Contact Page" />
+      <Seo
+        title={seoInfo.seoFields.seoFieldsMetaTitle}
+        description={seoInfo.seoFields.seoFieldsMetaContent}
+        metaImg={seoInfo.seoFields.seoFieldsMetaImage.mediaItemUrl}
+        location={props.location.pathname}
+      />
       <ContactIntro data={props.data.contactIntro.template.contactTemplate} />
       <ContactForm data={props.data.contactForm.template.contactTemplate} />
       <ProductsDisplay
@@ -27,6 +33,16 @@ const contact = props => {
 
 export const contactTempQuery = graphql`
   query contactTempPage($id: String!) {
+    seoInfo: wpPage(id: { eq: $id }) {
+      seoFields {
+        seoMetaTitle
+        seoMetaDescription
+        seoMetaImage {
+          mediaItemUrl
+        }
+      }
+    }
+
     contactIntro: wpPage(id: { eq: $id }) {
       template {
         ... on WpTemplate_Contact {

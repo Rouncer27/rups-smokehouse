@@ -40,6 +40,30 @@ module.exports = {
         icon: `src/images/favicon.png`, // This path is relative to the root of the site.
       },
     },
+    `gatsby-plugin-sitemap`,
+    {
+      resolve: `gatsby-plugin-google-gtag`,
+      options: {
+        trackingIds: ["G-KT1QWDLM69"],
+      },
+      pluginConfig: {
+        head: true,
+      },
+    },
+    {
+      resolve: "gatsby-plugin-robots-txt",
+      options: {
+        host: "https://rupssmokehousejerky.com/",
+        sitemap: "https://rupssmokehousejerky.com/sitemap-index.xml",
+        policy: [{ userAgent: "*", allow: "/" }],
+      },
+    },
+    {
+      resolve: `gatsby-plugin-canonical-urls`,
+      options: {
+        siteUrl: `https://rupssmokehousejerky.com/`,
+      },
+    },
     `gatsby-plugin-netlify`,
   ],
 }
