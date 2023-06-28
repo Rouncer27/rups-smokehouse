@@ -15,9 +15,9 @@ const contact = props => {
   return (
     <Layout>
       <Seo
-        title={seoInfo.seoFields.seoFieldsMetaTitle}
-        description={seoInfo.seoFields.seoFieldsMetaContent}
-        metaImg={seoInfo.seoFields.seoFieldsMetaImage.mediaItemUrl}
+        title={seoInfo.seoFields.seoMetaTitle}
+        description={seoInfo.seoFields.seoMetaDescription}
+        metaImg={seoInfo.seoFields.seoMetaImage.mediaItemUrl}
         location={props.location.pathname}
       />
       <ContactIntro data={props.data.contactIntro.template.contactTemplate} />
