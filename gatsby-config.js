@@ -5,7 +5,9 @@ module.exports = {
     title: `Rup's Smokehouse`,
     description: `Rup's Smokehouse`,
     author: `@switchback4ever`,
-    siteUrl: `https://gatsbystarterdefaultsource.gatsbyjs.io/`,
+    metaImg: `src/images/rups-logo-rups.png`,
+    siteLogo: `src/images/rups-logo-rups.png`,
+    siteUrl: `https://rupssmokehousejerky.com/`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
