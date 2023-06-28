@@ -13,7 +13,7 @@ import Testimonial from "../components/templates/contact/Testimonial"
 const contact = props => {
   return (
     <Layout>
-      <Seo />
+      <Seo title="Contact Page" />
       <ContactIntro data={props.data.contactIntro.template.contactTemplate} />
       <ContactForm data={props.data.contactForm.template.contactTemplate} />
       <ProductsDisplay
