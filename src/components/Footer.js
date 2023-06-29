@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
-import { graphql, useStaticQuery } from "gatsby"
-import { B1White, colors, medWrapper } from "../styles/helpers"
+import { Link, graphql, useStaticQuery } from "gatsby"
+import { B1White, B2White, colors, medWrapper } from "../styles/helpers"
 
 const getData = graphql`
   {
@@ -28,6 +28,13 @@ const Footer = () => {
                 .footerContentContent,
           }}
         />
+        <div className="foot-links">
+          <p>
+            <Link to="/privacy-policy">Privacy Policy</Link>
+            {" | "}
+            <Link to="/disclaimer">Disclaimer</Link>
+          </p>
+        </div>
       </div>
     </StyledFooter>
   )
@@ -56,6 +63,22 @@ const StyledFooter = styled.footer`
 
     a {
       ${B1White};
+      color: rgba(255, 255, 255, 0.55);
+    }
+  }
+
+  .foot-links {
+    width: 100%;
+    text-align: center;
+
+    p {
+      ${B2White};
+      margin: 0;
+      color: rgba(255, 255, 255, 0.55);
+    }
+
+    a {
+      ${B2White};
       color: rgba(255, 255, 255, 0.55);
     }
   }
