@@ -1,17 +1,15 @@
 import React from "react"
 import { graphql } from "gatsby"
 
-import Layout from "../components/Layout"
+import LayoutAlt from "../components/LayoutAlt"
 import Seo from "../components/Seo"
 import MainContent from "../components/templates/default/MainContent"
 
 const defaultPage = props => {
   const seoInfo = props?.data?.seoInfo
 
-  console.log("PROPS", props)
-
   return (
-    <Layout>
+    <LayoutAlt>
       <Seo
         title={seoInfo.seoFields.seoMetaTitle}
         description={seoInfo.seoFields.seoMetaDescription}
@@ -19,7 +17,7 @@ const defaultPage = props => {
         location={props.location.pathname}
       />
       <MainContent data={props.data.mainContent.template.defaultTemplate} />
-    </Layout>
+    </LayoutAlt>
   )
 }
 
