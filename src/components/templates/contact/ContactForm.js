@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useRef } from "react"
 import styled from "styled-components"
 import {
   B1White,
@@ -6,6 +6,7 @@ import {
   Btn1One,
   standardWrapper,
 } from "../../../styles/helpers"
+import ReCAPTCHA from "react-google-recaptcha"
 
 import submitToServer from "../../shared/formParts/functions/submitToServer"
 import InputFieldTwo from "../../shared/formParts/InputFieldTwo"
@@ -17,6 +18,7 @@ import LoadingModal from "../../shared/modals/LoadingModal"
 import icon from "../../../images/chunky-style.png"
 
 const ContactForm = ({ data }) => {
+  const recaptchaRef = useRef(null)
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -34,6 +36,7 @@ const ContactForm = ({ data }) => {
     errorWarnDisplay: false,
     success: false,
     errors: [],
+    captachError: false,
   })
 
   const setFlavours = slug => {
@@ -87,6 +90,7 @@ const ContactForm = ({ data }) => {
       errorWarnDisplay: false,
       success: false,
       errors: [],
+      captachError: false,
     })
 
     clearFormFields()
@@ -128,6 +132,16 @@ const ContactForm = ({ data }) => {
 
   const handleOnSubmit = async event => {
     event.preventDefault()
+    const recaptchaValue = recaptchaRef.current.getValue()
+
+    if (recaptchaValue === "") {
+      setFormStatus({
+        ...formStatus,
+        captachError: true,
+      })
+      return
+    }
+
     setFormStatus(prevState => {
       return {
         ...prevState,
@@ -304,6 +318,18 @@ const ContactForm = ({ data }) => {
                 rows={4}
               />
             </fieldset>
+
+            <div className="captcha-container">
+              {formStatus.captachError && (
+                <p>
+                  The form will not submit until you have checked the reCAPCHA.
+                </p>
+              )}
+              <ReCAPTCHA
+                ref={recaptchaRef}
+                sitekey="6Ldwlf8mAAAAAGF9ggf_4x8TLDATZW2IfA2PIJjP"
+              />
+            </div>
 
             <SubmitButton>
               <p className="required-note">
