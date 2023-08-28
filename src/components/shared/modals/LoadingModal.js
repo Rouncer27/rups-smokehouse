@@ -2,13 +2,14 @@ import React from "react"
 import styled from "styled-components"
 
 import { B1White, colors } from "../../../styles/helpers"
+import loadingImg from "../../../images/loading.gif"
 
 const LoadingModal = () => {
   return (
     <LoadingModalStyled>
       <div className="innerLoading">
         <div className="innerLoading__spinner">
-          <img src={`hi`} alt="Form is sending" />
+          <img src={`${loadingImg}`} alt="Form is sending" />
         </div>
         <p>Validating and sending your contact form. Please standby.</p>
       </div>

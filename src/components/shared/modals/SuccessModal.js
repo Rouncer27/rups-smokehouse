@@ -2,13 +2,14 @@ import React from "react"
 import styled from "styled-components"
 
 import { B1White, colors } from "../../../styles/helpers"
+import successImg from "../../../images/success.gif"
 
 const SuccessModal = ({ handleSuccessModalClose }) => {
   return (
     <SuccessModalStyled feedback={true}>
       <div className="innerLoading">
         <div className="innerLoading__spinner">
-          <img src={``} alt="Form is sending" />
+          <img src={`${successImg}`} alt="Success!" />
         </div>
         <p>Your form has been successfully sent.</p>
         <div className="close-button">

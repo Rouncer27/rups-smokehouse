@@ -2,13 +2,14 @@ import React from "react"
 import styled from "styled-components"
 
 import { B1White, colors } from "../../../styles/helpers"
+import errorImg from "../../../images/error.png"
 
 const ErrorModal = ({ handleErrorModalClose }) => {
   return (
     <LoadingModalStyled feedback={true}>
       <div className="innerLoading">
         <div className="innerLoading__spinner">
-          <img src={``} alt="Form is sending" />
+          <img src={`${errorImg}`} alt="Error" />
         </div>
         <p>
           If seems that there is a few errors with submitting your form.
