@@ -116,6 +116,8 @@ const InputFieldStyled = styled.div`
           ? colors.colorShad
           : props.color === "green"
           ? colors.colorShad2
+          : props.color === "teal"
+          ? "#40bfb4"
           : props.color === "red"
           ? colors.colorPrimary
           : colors.colorPrimary};

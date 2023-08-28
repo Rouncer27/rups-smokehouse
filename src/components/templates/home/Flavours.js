@@ -215,6 +215,8 @@ const Item = styled.div`
         ? colors.colorShad
         : props.colorHead === "green"
         ? colors.colorShad2
+        : props.colorHead === "teal"
+        ? "#40bfb4"
         : props.colorHead === "red"
         ? colors.colorPrimary
         : colors.colorSecondary};
